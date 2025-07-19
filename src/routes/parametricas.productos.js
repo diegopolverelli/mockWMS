@@ -3,11 +3,11 @@ const { auth } = require('../middleware/auth.js');
 const Router=require('express').Router;
 const router=Router()
 
-router.use(auth)
+// router.use(auth)
 
-router.get('/getproductobyid/:id',(req,res)=>{
+router.get('/getproductobyid/:id', auth, (req,res)=>{
 
-    console.log("ingresa a getproductobyid")
+    // console.log("ingresa a getproductobyid")
 
     res.setHeader('Content-Type','application/json')
     res.status(200).json(
@@ -85,7 +85,7 @@ router.get('/getproductobyid/:id',(req,res)=>{
     )
 })
 
-router.get("/getfamilia", (req, res)=>{
+router.get("/getfamilia", auth, (req, res)=>{
 
 
     res.setHeader('Content-Type','application/json');
@@ -599,7 +599,7 @@ router.get("/getfamilia", (req, res)=>{
     );
 })
 
-router.get("/getsubfamilia", (req, res)=>{
+router.get("/getsubfamilia", auth, (req, res)=>{
 
     res.setHeader('Content-Type','application/json');
     return res.status(200).json(
