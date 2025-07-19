@@ -5,10 +5,12 @@ const PORT=8080;
 
 const app=express();
 
+const rutaBase="/"
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use("/depot_api/desarrollo", routerAutenticacion)
-app.use("/depot_api/desarrollo", routerParametricasProductos)
+app.use(rutaBase, routerAutenticacion)
+app.use(rutaBase, routerParametricasProductos)
 
 app.get('/',(req,res)=>{
     res.setHeader('Content-Type','text/plain');
