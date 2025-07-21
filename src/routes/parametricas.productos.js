@@ -828,5 +828,25 @@ router.get("/getsubfamilia", auth, (req, res)=>{
     );
 })
 
+router.post("/postinsproductoampliado", auth, (req, res)=>{
+    console.log(req.body)
+    let {
+        "COD. PRODUCTO":artcod, 
+        DESCRIPCION,
+    }=req.body
+
+    if(!artcod || !DESCRIPCION){
+        res.setHeader('Content-Type','application/json');
+        return res.status(400).json({error:`COD. PRODUCTO y DESCRIPTION son campos requeridos`})
+    }
+
+    if(artcod=="001010001"){
+        res.setHeader('Content-Type','application/json');
+        return res.status(400).json({error:`El producto con código ${artcod} ya existe en DB`})
+    }
+
+    res.setHeader('Content-Type','application/json');
+    return res.status(200).json({payload:`Producto recibido!`, producto: req.body});
+})
 
 module.exports=router
