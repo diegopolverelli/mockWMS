@@ -846,7 +846,11 @@ router.post("/postinsproductoampliado", auth, (req, res)=>{
     }
 
     res.setHeader('Content-Type','application/json');
-    return res.status(200).json({payload:`Producto recibido!`, producto: req.body});
+    return res.status(200).json({
+        payload:`Producto recibido!`, 
+        message: `Mensaje adicional`,
+        producto: req.body
+    });
 })
 
 module.exports=router
